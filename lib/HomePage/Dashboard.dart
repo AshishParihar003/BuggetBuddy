@@ -150,7 +150,7 @@ class HeroCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.blue,
+      color: Color.fromARGB(255, 219, 113, 27),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
