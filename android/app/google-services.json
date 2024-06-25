@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "840869534877",
+    "project_id": "moneymanagement-fbb4e",
+    "storage_bucket": "moneymanagement-fbb4e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840869534877:android:016f1359d5f6ad872f0874",
+        "android_client_info": {
+          "package_name": "com.example.jar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwP-bv6fNQ9oHXc3GXtvc_eg1hBeYjxj8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840869534877:android:429a9cba8be173912f0874",
+        "android_client_info": {
+          "package_name": "com.example.money"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwP-bv6fNQ9oHXc3GXtvc_eg1hBeYjxj8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
