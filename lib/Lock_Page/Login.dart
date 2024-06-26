@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:jar/HomePage/Dashboard.dart';
-import 'package:jar/HomePage/database.dart';
+import 'package:jar/HomePage/HomePage.dart';
+import 'package:jar/Lock_Page/AuthService.dart';
 import 'package:jar/Signup.dart/signup.dart';
 
-import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -67,17 +66,13 @@ class _LoginPageState extends State<LoginPage>
         'totalCredit': 0,
         'totalDebit': 0,
       };
-      // try {
+      
       await authService.createUser(data, context);
-      // Navigator.pushReplacement(
-      //     context, MaterialPageRoute(builder: (context) => Dashboard()));
+
 
       ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Form Submitted Successfully")));
-      // } catch (e) {
-      //   ScaffoldMessenger.of(context)
-      //       .showSnackBar(SnackBar(content: Text("Error: ${e.toString()}")));
-      // } finally {
+    
       setState(() {
         isLoader = false;
       });
@@ -226,6 +221,17 @@ class _LoginPageState extends State<LoginPage>
                                 },
                                 child: const Text("Login"),
                               ),
+                              const SizedBox(height: 20),
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                          const Dashboard()));
+                                },
+                                child: const Text("Guest"),
+                              ),
                             ],
                           ),
                         ),
@@ -292,25 +298,3 @@ class _LoginPageState extends State<LoginPage>
   }
 }
 
-class AuthService {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  var db = DB();
-  Future<void> createUser(data, context) async {
-    try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: data["email"], password: data['password']);
-      await db.addUser(data, context);
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Dashboard()));
-    } catch (e) {
-      showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              title: Text("Sign Up Failed"),
-              content: Text(e.toString()),
-            );
-          });
-    }
-  }
-}

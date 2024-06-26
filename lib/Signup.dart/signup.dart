@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jar/HomePage/Dashboard.dart';
+import 'package:jar/HomePage/HomePage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:jar/Lock_Page/Login.dart';
 
@@ -124,6 +124,7 @@ class _SignUpPageState extends State<SignUpPage>
                             builder: (context) => const LoginPage())),
                     child: const Text("New Account",
                         style: TextStyle(color: Colors.deepPurple))),
+                const SizedBox(height: 10),
               ],
             ),
           ),
@@ -146,7 +147,7 @@ class _SignUpPageState extends State<SignUpPage>
         prefixIcon: Icon(icon, color: Colors.deepPurple),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide(color: Colors.deepPurpleAccent),
+          borderSide: const BorderSide(color: Colors.deepPurpleAccent),
         ),
       ),
       keyboardType: obscureText
@@ -159,8 +160,9 @@ class _SignUpPageState extends State<SignUpPage>
 
   String? _validateEmail(String? value) {
     if (value == null || value.isEmpty) return 'Please enter an email';
-    if (!RegExp(r'^[\w-\.]+@([\w-]+\.[\w-]{2,4})$').hasMatch(value))
+    if (!RegExp(r'^[\w-\.]+@([\w-]+\.[\w-]{2,4})$').hasMatch(value)) {
       return 'Please enter a valid email';
+    }
     return null;
   }
 

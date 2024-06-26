@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
-import 'package:jar/HomePage/Dashboard.dart';
-import 'package:jar/HomePage/TransitionPage.dart';
+import 'package:jar/HomePage/HomePage.dart';
+import 'package:jar/HomePage/Transaction/TransitionPage.dart';
 
 
 
@@ -17,7 +17,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
 
   final List<Widget> _pages = [
-    Dashboard(),
+    const Dashboard(),
     TransactionScreen(),
   ];
 
@@ -47,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: ConvexAppBar(
         backgroundColor: Colors.black,
         style: TabStyle.react,
-        items: [
+        items: const [
           TabItem(icon: Icons.home, title: 'Home'),
           TabItem(icon: Icons.history, title: 'History'),
         ],

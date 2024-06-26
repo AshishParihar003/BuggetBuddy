@@ -1,9 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:jar/HomePage/icon_data.dart';
+import 'package:jar/data/icon_data.dart';
 
 class CategoryDropDown extends StatelessWidget {
-  CategoryDropDown({super.key, this.cattype, required this.onChanged, required String catType});
+  CategoryDropDown(
+      {super.key,
+      this.cattype,
+      required this.onChanged,
+      required String catType});
   final String? cattype;
   final ValueChanged<String?> onChanged;
   final AppIcons appIcons = AppIcons();
@@ -20,10 +23,15 @@ class CategoryDropDown extends StatelessWidget {
         value: e.key,
         child: Row(
           children: [
-            Icon(e.value, color: Colors.black45, size: 24), // Ensure icons are not too large
-            SizedBox(width: 10),
-            Expanded( // Allows text to adjust within available space
-              child: Text(e.key, style: TextStyle(color: Colors.black45, overflow: TextOverflow.ellipsis)),
+            Icon(e.value,
+                color: Colors.black45,
+                size: 24), // Ensure icons are not too large
+            const SizedBox(width: 10),
+            Expanded(
+              // Allows text to adjust within available space
+              child: Text(e.key,
+                  style: const TextStyle(
+                      color: Colors.black45, overflow: TextOverflow.ellipsis)),
             ),
           ],
         ),
@@ -31,9 +39,10 @@ class CategoryDropDown extends StatelessWidget {
     }).toList();
 
     return DropdownButton<String>(
-      value: cattype != null && categoryMap.containsKey(cattype) ? cattype : null,
+      value:
+          cattype != null && categoryMap.containsKey(cattype) ? cattype : null,
       isExpanded: true,
-      hint: Text("Select Category"),
+      hint: const Text("Select Category"),
       items: menuItems,
       onChanged: onChanged,
       dropdownColor: Colors.white,
@@ -57,16 +66,16 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               TextFormField(
-                decoration: InputDecoration(labelText: "Title"),
+                decoration: const InputDecoration(labelText: "Title"),
               ),
               TextFormField(
                 keyboardType: TextInputType.number,
-                decoration: InputDecoration(labelText: "Amount"),
+                decoration: const InputDecoration(labelText: "Amount"),
               ),
               CategoryDropDown(
                 cattype: category,
@@ -76,7 +85,8 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
                       category = value;
                     });
                   }
-                }, catType: '',
+                },
+                catType: '',
               ),
               DropdownButtonFormField(
                 value: type,
@@ -87,13 +97,14 @@ class _AddTransactionFormState extends State<AddTransactionForm> {
                     });
                   }
                 },
-                items: [
-                  DropdownMenuItem(child: Text("Credit"), value: 'credit'),
-                  DropdownMenuItem(child: Text("Debit"), value: 'debit'),
+                items: const [
+                  DropdownMenuItem(value: 'credit', child: Text("Credit")),
+                  DropdownMenuItem(value: 'debit', child: Text("Debit")),
                 ],
               ),
-              SizedBox(height: 16),
-              ElevatedButton(onPressed: () {}, child: Text("Add Transaction")),
+              const SizedBox(height: 16),
+              ElevatedButton(
+                  onPressed: () {}, child: const Text("Add Transaction")),
             ],
           ),
         ),
